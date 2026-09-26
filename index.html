@@ -1,713 +1,315 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>KFC｜限時三折優惠活動</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family:
-        "Noto Sans TC",
-        "Microsoft JhengHei",
-        sans-serif;
-
-      background:
-        radial-gradient(
-          circle at top,
-          #ff4545 0%,
-          #b90000 28%,
-          #650000 55%,
-          #120000 100%
-        );
-
-      color: #fff;
-    }
-
-    /* 主容器 */
-    .page {
-      width: 100%;
-      max-width: 430px;
-      margin: auto;
-      padding: 18px 14px 35px;
-    }
-
-    /* KFC 卡片 */
-    .kfc-card {
-      position: relative;
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          145deg,
-          #ffffff 0%,
-          #fff8f8 48%,
-          #f0eeee 100%
-        );
-
-      border-radius: 22px;
-
-      border: 3px solid #111;
-
-      box-shadow:
-        0 10px 0 #111,
-        0 18px 35px rgba(0,0,0,.35);
-    }
-
-    /* 黑色斜角 */
-    .slash {
-      transform: rotate(-4deg);
-    }
-
-    /* 紅色標籤 */
-    .red-tag {
-      display: inline-block;
-
-      background: #d71920;
-      color: white;
-
-      padding: 6px 12px;
-
-      border-radius: 7px;
-
-      font-weight: 900;
-
-      box-shadow:
-        3px 3px 0 #111;
-    }
-
-    /* 大標題 */
-    .big-title {
-      font-weight: 1000;
-
-      color: #d71920;
-
-      text-shadow:
-        3px 3px 0 #111,
-        5px 5px 0 rgba(0,0,0,.15);
-
-      line-height: 1;
-    }
-
-    /* 三折 */
-    .discount {
-      font-size: 68px;
-
-      font-weight: 1000;
-
-      color: #ffcc00;
-
-      -webkit-text-stroke: 3px #111;
-
-      text-shadow:
-        5px 5px 0 #d71920,
-        8px 8px 0 #111;
-
-      line-height: .95;
-    }
-
-    /* 優惠券 */
-    .coupon {
-      position: relative;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ffffff,
-          #fff3f3
-        );
-
-      border: 3px dashed #d71920;
-
-      border-radius: 18px;
-
-      padding: 18px;
-
-      color: #111;
-
-      box-shadow:
-        0 6px 0 #111;
-    }
-
-    .coupon::before,
-    .coupon::after {
-      content: "";
-
-      position: absolute;
-
-      width: 22px;
-      height: 22px;
-
-      background: #850000;
-
-      border-radius: 50%;
-
-      top: 50%;
-
-      transform: translateY(-50%);
-    }
-
-    .coupon::before {
-      left: -13px;
-    }
-
-    .coupon::after {
-      right: -13px;
-    }
-
-    /* CTA */
-    .claim-btn {
-      width: 100%;
-
-      border: 3px solid #111;
-
-      background:
-        linear-gradient(
-          180deg,
-          #f32932,
-          #c40008
-        );
-
-      color: white;
-
-      font-size: 18px;
-
-      font-weight: 1000;
-
-      padding: 15px;
-
-      border-radius: 14px;
-
-      box-shadow:
-        0 6px 0 #111;
-
-      transition: .15s;
-    }
-
-    .claim-btn:active {
-      transform: translateY(4px);
-
-      box-shadow:
-        0 2px 0 #111;
-    }
-
-    /* 食物裝飾 */
-    .food-icon {
-      font-size: 38px;
-
-      filter:
-        drop-shadow(2px 3px 0 #111);
-    }
-
-    /* 閃光 */
-    .shine {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shine::after {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      left: -120%;
-
-      width: 60%;
-      height: 100%;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,.45),
-          transparent
-        );
-
-      transform: skewX(-20deg);
-
-      animation:
-        shine 2.8s infinite;
-    }
-
-    @keyframes shine {
-
-      0% {
-        left: -120%;
-      }
-
-      45%,100% {
-        left: 140%;
-      }
-
-    }
-
-    /* 紅黑區塊 */
-    .black-red {
-      background:
-        linear-gradient(
-          135deg,
-          #111 0%,
-          #111 60%,
-          #d71920 60%,
-          #d71920 100%
-        );
-    }
-
-    /* Modal */
-    .modal-bg {
-      background: rgba(0,0,0,.82);
-      backdrop-filter: blur(5px);
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>荒野亂鬥｜限時活動</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  body {
+    font-family: Arial, "Microsoft JhengHei", sans-serif;
+    background:
+      radial-gradient(circle at 20% 10%, #ffe600 0, #ffe600 12%, transparent 30%),
+      radial-gradient(circle at 90% 20%, #ff3b30 0, #ff3b30 14%, transparent 32%),
+      linear-gradient(145deg, #17152f, #30205d 55%, #15132b);
+    overflow-x: hidden;
+  }
+
+  .comic-shadow {
+    text-shadow:
+      3px 3px 0 #111,
+      -2px -2px 0 #111,
+      2px -2px 0 #111,
+      -2px 2px 0 #111;
+  }
+
+  .card-shadow {
+    box-shadow:
+      0 8px 0 #111,
+      0 12px 22px rgba(0,0,0,.35);
+  }
+
+  .yellow-btn {
+    background: linear-gradient(#ffd928, #ff9d00);
+    border: 3px solid #111;
+    box-shadow: 0 5px 0 #111;
+  }
+
+  .yellow-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #111;
+  }
+
+  .event-card {
+    border: 3px solid #111;
+    background: linear-gradient(145deg, #fff7c7, #ffffff);
+  }
+</style>
 </head>
 
+<body class="min-h-screen flex justify-center px-4 py-6">
 
-<body>
+<div class="w-full max-w-[400px]">
 
-  <main class="page">
+  <!-- 頂部標題 -->
+  <div class="text-center mb-6">
 
-    <!-- 頂部品牌區 -->
-    <section class="text-center mb-5">
+    <div class="inline-block bg-[#ffcc00] border-[3px] border-black
+                rounded-xl px-4 py-1 font-black text-[13px]
+                -rotate-2 shadow-[4px_4px_0_#111]">
+      BRAWL EVENT
+    </div>
 
-      <div class="inline-flex items-center gap-3">
+    <h1 class="mt-3 text-white font-black text-[38px]
+               leading-none italic comic-shadow">
+      限時活動
+    </h1>
 
-        <div
-          class="w-16 h-16 bg-white border-4 border-black rounded-xl
-                 flex items-center justify-center shadow-[4px_4px_0_#111]">
+    <p class="mt-2 text-white font-bold text-[14px]">
+      限時獎勵活動開放中！
+    </p>
 
-          <div class="text-center">
-
-            <div class="text-[9px] font-black text-black">
-              KFC
-            </div>
-
-            <div class="text-2xl">
-              🍗
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="text-left">
-
-          <p class="text-[11px] tracking-[3px] font-bold">
-            LIMITED FOOD OFFER
-          </p>
-
-          <p class="text-2xl font-black">
-            限時優惠活動
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
+  </div>
 
 
-    <!-- 主視覺 -->
-    <section class="kfc-card p-5 mb-5">
+  <!-- 活動資訊 -->
+  <div class="event-card rounded-[22px] p-5 card-shadow">
 
-      <div class="absolute -right-5 -top-5 text-[80px] rotate-12">
-        🍗
-      </div>
+    <div class="flex items-center justify-between">
 
-      <div class="relative z-10">
-
-        <span class="red-tag text-sm">
-          🔥 限時優惠
-        </span>
-
-        <p class="text-black font-black text-[15px] mt-5">
-          經典美味．限時享受
+      <div>
+        <p class="text-[#765100] font-black text-[13px]">
+          SPECIAL EVENT
         </p>
 
-        <h1 class="big-title text-[42px] mt-2">
-          全品項
-        </h1>
-
-        <div class="flex items-center gap-3 mt-2">
-
-          <div class="discount">
-            3折
-          </div>
-
-          <div>
-
-            <p class="text-black font-black text-lg">
-              限時優惠
-            </p>
-
-            <p class="text-gray-600 text-xs">
-              精選優惠活動
-            </p>
-
-          </div>
-
-        </div>
-
-        <div
-          class="black-red text-white
-                 rounded-xl mt-6 p-4">
-
-          <p class="text-xs font-bold">
-            📅 活動期間
-          </p>
-
-          <p class="text-2xl font-black mt-1">
-            10/01 ～ 10/31
-          </p>
-
-          <p class="text-[11px] mt-1 opacity-80">
-            10 月期間皆可查看活動內容
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- 優惠券 -->
-    <section class="coupon mb-5">
-
-      <div class="flex justify-between items-start">
-
-        <div>
-
-          <p class="text-xs text-gray-500 font-bold">
-            LIMITED COUPON
-          </p>
-
-          <h2 class="text-[25px] font-black text-[#d71920] mt-1">
-            三折優惠券
-          </h2>
-
-        </div>
-
-        <div class="food-icon">
-          🍗
-        </div>
-
-      </div>
-
-
-      <div class="border-t-2 border-dashed border-[#d71920] my-4">
-      </div>
-
-
-      <div class="flex items-end gap-2">
-
-        <span
-          class="text-6xl font-black text-[#d71920]">
-          3
-        </span>
-
-        <span
-          class="text-2xl font-black text-black mb-2">
-          折
-        </span>
-
-      </div>
-
-
-      <p class="text-gray-600 text-xs mt-2">
-        限時優惠活動・數量有限
-      </p>
-
-
-      <button
-        id="openModal"
-        class="claim-btn shine mt-5">
-
-        🎟️ 立即查看優惠
-
-      </button>
-
-    </section>
-
-
-    <!-- 精選優惠 -->
-    <section class="mb-5">
-
-      <div class="flex items-center gap-2 mb-3">
-
-        <div class="w-2 h-6 bg-[#d71920]"></div>
-
-        <h2 class="text-xl font-black">
-          精選優惠
+        <h2 class="text-[#ff3b30] font-black text-[25px]">
+          荒野亂鬥活動獎勵
         </h2>
-
       </div>
 
-
-      <div class="grid grid-cols-2 gap-3">
-
-        <div
-          class="bg-white rounded-xl p-4 text-black
-                 border-2 border-black
-                 shadow-[4px_4px_0_#111]">
-
-          <div class="text-3xl mb-2">
-            🍗
-          </div>
-
-          <p class="font-black">
-            香脆炸雞
-          </p>
-
-          <p class="text-xs text-gray-500 mt-1">
-            限時優惠
-          </p>
-
-        </div>
-
-
-        <div
-          class="bg-white rounded-xl p-4 text-black
-                 border-2 border-black
-                 shadow-[4px_4px_0_#111]">
-
-          <div class="text-3xl mb-2">
-            🍟
-          </div>
-
-          <p class="font-black">
-            經典薯條
-          </p>
-
-          <p class="text-xs text-gray-500 mt-1">
-            限時優惠
-          </p>
-
-        </div>
-
+      <div class="bg-[#ff3b30] text-white border-[3px] border-black
+                  rounded-full w-14 h-14 flex items-center justify-center
+                  font-black text-[12px] rotate-6">
+        限時
       </div>
 
-    </section>
+    </div>
 
+    <div class="mt-4 bg-[#eee] border-[2px] border-black
+                rounded-xl p-3">
 
-    <!-- 活動說明 -->
-    <section
-      class="bg-black/70 rounded-2xl p-4
-             border border-white/20 mb-5">
-
-      <h3 class="font-black text-lg mb-3">
-        📢 活動說明
-      </h3>
-
-      <div class="text-xs text-gray-300 leading-6">
-
-        <p>・活動期間：10/01 ～ 10/31</p>
-
-        <p>・優惠內容以實際活動頁資訊為準</p>
-
-        <p>・優惠數量及適用門市依活動規則而定</p>
-
-        <p>・實際使用方式請依活動頁說明</p>
-
-      </div>
-
-    </section>
-
-
-    <!-- 頁尾 -->
-    <footer class="text-center">
-
-      <p class="text-[10px] text-white/50 leading-5">
-
-        本頁為優惠活動展示頁／非 KFC 官方網站。<br>
-
-        KFC 相關商標及品牌名稱歸其各自權利人所有。
-
+      <p class="text-[12px] text-[#555] font-bold">
+        活動時間
       </p>
 
-    </footer>
-
-  </main>
-
-
-  <!-- Modal -->
-
-  <div
-    id="modal"
-    class="hidden fixed inset-0 modal-bg
-           z-50 flex items-center
-           justify-center p-4">
-
-    <div
-      class="w-full max-w-[360px]
-             bg-white rounded-2xl
-             border-4 border-black
-             p-6 text-center
-             shadow-[8px_8px_0_#d71920]">
-
-      <div class="text-5xl mb-3">
-        🎟️
-      </div>
-
-      <p
-        class="text-xs tracking-[3px]
-               text-gray-500 font-bold">
-
-        LIMITED COUPON
-
+      <p class="text-[18px] text-[#111] font-black">
+        09/26 ～ 09/30
       </p>
-
-
-      <h2
-        class="text-3xl font-black
-               text-[#d71920] mt-2">
-
-        三折優惠券
-
-      </h2>
-
-
-      <div
-        class="bg-[#fff1f1]
-               border-2 border-dashed
-               border-[#d71920]
-               rounded-xl
-               p-4 mt-5">
-
-        <p class="text-black font-black text-xl">
-          全品項限時優惠
-        </p>
-
-        <p
-          class="text-[#d71920]
-                 text-5xl font-black mt-2">
-
-          3折
-
-        </p>
-
-        <p class="text-gray-500 text-xs mt-2">
-          活動期間：10/01 ～ 10/31
-        </p>
-
-      </div>
-
-
-      <button
-        id="goClaim"
-        class="claim-btn mt-5">
-
-        前往優惠活動
-
-      </button>
-
-
-      <button
-        id="closeModal"
-        class="w-full mt-3
-               py-3 rounded-xl
-               bg-gray-200
-               text-gray-600
-               font-bold">
-
-        返回
-
-      </button>
 
     </div>
 
   </div>
 
 
-  <script>
+  <!-- 第一個獎勵 -->
+  <div class="event-card rounded-[22px] p-5 mt-5 card-shadow">
 
-    /*
-      ====================================
-      修改跳轉連結只需要改這裡
-      ====================================
-    */
+    <div class="flex justify-between items-start">
 
-    const CLAIM_URL =
-      "https://lin.ee/9GGLWRI";
+      <div>
+        <div class="text-[#ff3b30] font-black text-[13px]">
+          REWARD 01
+        </div>
 
+        <h3 class="text-[#17152f] font-black text-[23px] mt-1">
+          限時活動獎勵
+        </h3>
+      </div>
 
-    const modal =
-      document.getElementById("modal");
+      <div class="bg-[#ffd928] border-[3px] border-black
+                  rounded-lg px-2 py-1 text-[11px] font-black
+                  rotate-3">
+        SPECIAL
+      </div>
 
-    const openModal =
-      document.getElementById("openModal");
+    </div>
 
-    const closeModal =
-      document.getElementById("closeModal");
+    <p class="text-[12px] text-[#666] font-bold mt-3">
+      活動期間可查看本次限時獎勵內容
+    </p>
 
-    const goClaim =
-      document.getElementById("goClaim");
+    <button
+      class="openModal yellow-btn mt-4 w-full text-[#111]
+             font-black py-3.5 rounded-xl text-[16px]"
+      data-name="限時活動獎勵">
 
+      立即查看獎勵
 
-    /* 開啟彈窗 */
+    </button>
 
-    openModal.addEventListener(
-      "click",
-      () => {
-
-        modal.classList.remove("hidden");
-
-      }
-    );
-
-
-    /* 關閉 */
-
-    closeModal.addEventListener(
-      "click",
-      () => {
-
-        modal.classList.add("hidden");
-
-      }
-    );
+  </div>
 
 
-    /* 點擊背景關閉 */
+  <!-- 第二個獎勵 -->
+  <div class="event-card rounded-[22px] p-5 mt-5 card-shadow">
 
-    modal.addEventListener(
-      "click",
-      (event) => {
+    <div class="flex justify-between items-start">
 
-        if (
-          event.target === modal
-        ) {
+      <div>
+        <div class="text-[#367cff] font-black text-[13px]">
+          REWARD 02
+        </div>
 
-          modal.classList.add("hidden");
+        <h3 class="text-[#17152f] font-black text-[23px] mt-1">
+          特別活動獎勵
+        </h3>
+      </div>
 
-        }
+      <div class="bg-[#367cff] text-white border-[3px] border-black
+                  rounded-lg px-2 py-1 text-[11px] font-black
+                  -rotate-3">
+        BONUS
+      </div>
 
-      }
-    );
+    </div>
+
+    <p class="text-[12px] text-[#666] font-bold mt-3">
+      查看活動內容並完成領取流程
+    </p>
+
+    <button
+      class="openModal yellow-btn mt-4 w-full text-[#111]
+             font-black py-3.5 rounded-xl text-[16px]"
+      data-name="特別活動獎勵">
+
+      立即查看獎勵
+
+    </button>
+
+  </div>
 
 
-    /* 前往活動頁 */
+  <!-- 底部 -->
+  <div class="text-center mt-7 mb-3">
 
-    goClaim.addEventListener(
-      "click",
-      () => {
+    <p class="text-white/70 text-[11px] font-bold">
+      活動內容與開放時間以頁面顯示為準
+    </p>
 
-        window.location.href =
-          CLAIM_URL;
+  </div>
 
-      }
-    );
+</div>
 
-  </script>
+
+<!-- 彈窗 -->
+<div id="modal"
+     class="hidden fixed inset-0 bg-black/70 z-50
+            flex items-center justify-center p-4">
+
+  <div class="bg-white border-[4px] border-black
+              rounded-[24px] w-full max-w-[350px]
+              p-6 text-center
+              shadow-[0_10px_0_#000]">
+
+    <div class="inline-block bg-[#ff3b30]
+                text-white border-[3px] border-black
+                rounded-lg px-4 py-1
+                font-black text-[12px] rotate-2">
+      BRAWL EVENT
+    </div>
+
+    <h3 class="text-[#17152f] font-black text-[22px] mt-4">
+      活動獎勵
+    </h3>
+
+    <div class="mt-4 bg-[#fff2a8]
+                border-[3px] border-black
+                rounded-xl py-4">
+
+      <p id="modalReward"
+         class="text-[#ff3b30] font-black text-[17px]">
+        限時活動獎勵
+      </p>
+
+    </div>
+
+    <p class="text-[#555] text-[13px] font-bold mt-4 leading-6">
+      點擊下方按鈕前往活動頁面，
+      查看相關活動資訊與領取流程。
+    </p>
+
+    <button
+      id="goClaim"
+      class="mt-5 w-full yellow-btn
+             text-[#111] font-black
+             py-3.5 rounded-xl text-[16px]">
+
+      前往活動頁
+
+    </button>
+
+    <button
+      id="closeModal"
+      class="mt-4 w-full bg-[#e9e9e9]
+             border-[3px] border-black
+             text-[#333] font-black
+             py-3 rounded-xl">
+
+      返回
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const modal = document.getElementById("modal");
+const modalReward = document.getElementById("modalReward");
+
+document.querySelectorAll(".openModal").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    modalReward.textContent = button.dataset.name;
+
+    modal.classList.remove("hidden");
+
+  });
+
+});
+
+
+document.getElementById("closeModal").addEventListener("click", () => {
+
+  modal.classList.add("hidden");
+
+});
+
+
+modal.addEventListener("click", (event) => {
+
+  if (event.target === modal) {
+    modal.classList.add("hidden");
+  }
+
+});
+
+
+document.getElementById("goClaim").addEventListener("click", () => {
+
+  window.location.href = "https://lin.ee/Unati6C";
+
+});
+
+</script>
 
 </body>
 </html>
+```
