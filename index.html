@@ -1,315 +1,394 @@
-```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>荒野亂鬥｜限時活動</title>
-
+<title>傳說對決｜10週年演唱會</title>
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-  body {
-    font-family: Arial, "Microsoft JhengHei", sans-serif;
-    background:
-      radial-gradient(circle at 20% 10%, #ffe600 0, #ffe600 12%, transparent 30%),
-      radial-gradient(circle at 90% 20%, #ff3b30 0, #ff3b30 14%, transparent 32%),
-      linear-gradient(145deg, #17152f, #30205d 55%, #15132b);
-    overflow-x: hidden;
-  }
-
-  .comic-shadow {
-    text-shadow:
-      3px 3px 0 #111,
-      -2px -2px 0 #111,
-      2px -2px 0 #111,
-      -2px 2px 0 #111;
-  }
-
-  .card-shadow {
-    box-shadow:
-      0 8px 0 #111,
-      0 12px 22px rgba(0,0,0,.35);
-  }
-
-  .yellow-btn {
-    background: linear-gradient(#ffd928, #ff9d00);
-    border: 3px solid #111;
-    box-shadow: 0 5px 0 #111;
-  }
-
-  .yellow-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 1px 0 #111;
-  }
-
-  .event-card {
-    border: 3px solid #111;
-    background: linear-gradient(145deg, #fff7c7, #ffffff);
-  }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:#fff;
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% 5%,rgba(91,156,255,.42),transparent 28%),
+    radial-gradient(circle at 15% 35%,rgba(116,52,255,.24),transparent 28%),
+    radial-gradient(circle at 85% 45%,rgba(0,209,255,.18),transparent 28%),
+    linear-gradient(180deg,#071c55 0%,#07133e 35%,#030719 100%);
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;opacity:.65;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(90,181,255,.8) 1px,transparent 1.5px);
+  background-size:120px 120px,190px 190px;
+  background-position:15px 20px,60px 80px;
+}
+body:after{
+  content:"";position:fixed;left:50%;bottom:-170px;
+  width:760px;height:420px;transform:translateX(-50%);
+  pointer-events:none;
+  background:radial-gradient(ellipse,rgba(45,126,255,.28),transparent 68%);
+  filter:blur(12px);
+}
+.page{position:relative;width:100%;max-width:460px;margin:auto;padding:16px 12px 42px}
+.brand{text-align:center;margin-bottom:12px}
+.brand-top{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-size:9px;letter-spacing:3px;color:#ffe6a2;font-weight:900;
+}
+.brand-title{
+  margin-top:6px;font-size:22px;font-weight:1000;letter-spacing:3px;
+  color:#fff4cf;text-shadow:0 2px 12px #4ca9ff;
+}
+.anniv{
+  display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+  padding:4px 12px;border:1px solid rgba(255,221,130,.55);
+  border-radius:999px;background:rgba(10,27,73,.72);
+  color:#ffd86d;font-size:8px;letter-spacing:2px;
+}
+.hero{text-align:center;position:relative;margin:4px 0 20px}
+.hero .en{font-size:9px;letter-spacing:7px;color:#b9d9ff;font-weight:700}
+.hero h1{
+  margin:5px 0 4px;font-size:38px;line-height:1.05;font-weight:1000;
+  letter-spacing:5px;
+  background:linear-gradient(180deg,#fff 5%,#fff0c1 35%,#ffc83f 72%,#fff7cf 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.65));
+}
+.hero .sub{font-size:11px;letter-spacing:3px;color:#e9f2ff}
+.stage-line{
+  width:86%;height:2px;margin:13px auto 0;
+  background:linear-gradient(90deg,transparent,#7bd6ff,#ffe39a,#7bd6ff,transparent);
+  box-shadow:0 0 14px rgba(90,190,255,.7);
+}
+.card{
+  position:relative;overflow:hidden;margin-bottom:14px;padding:17px;
+  border-radius:20px;
+  background:
+    linear-gradient(145deg,rgba(20,50,112,.88),rgba(4,10,34,.96));
+  border:1px solid rgba(113,202,255,.48);
+  box-shadow:inset 0 1px rgba(255,255,255,.12),0 16px 45px rgba(0,0,0,.42);
+}
+.card:before{
+  content:"";position:absolute;left:12%;right:12%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,#fff0ae,#6dd8ff,transparent);
+}
+.section-kicker{font-size:8px;letter-spacing:3px;color:#8fdcff}
+.event-title{margin-top:4px;font-size:21px;font-weight:1000;color:#fff1bd}
+.gold-line{
+  height:1px;margin:13px 0;
+  background:linear-gradient(90deg,transparent,rgba(255,219,124,.9),rgba(96,210,255,.8),transparent);
+}
+.date-box{
+  text-align:center;padding:13px 8px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(52,133,255,.18),rgba(255,201,78,.08));
+  border:1px solid rgba(116,207,255,.35);
+}
+.date-label{font-size:8px;letter-spacing:3px;color:#91bce5}
+.date{margin-top:3px;font-size:25px;font-weight:1000;letter-spacing:2px;color:#fff0bb}
+.date span{padding:0 6px;color:#69cfff}
+.description{text-align:center;margin-top:11px;color:#c8d9ef;font-size:10px;line-height:1.8}
+.choice{text-align:center}
+.choice .small{font-size:8px;letter-spacing:4px;color:#80d8ff}
+.choice h2{
+  margin:4px 0 1px;font-size:29px;font-weight:1000;letter-spacing:8px;
+  color:#fff0b0;text-shadow:0 0 16px rgba(88,192,255,.38);
+}
+.choice p{margin:0;font-size:9px;letter-spacing:2px;color:#91a9c8}
+.option-list{display:flex;flex-direction:column;gap:9px;margin-top:17px}
+.reward-option{
+  position:relative;display:flex;align-items:center;min-height:67px;
+  padding:11px 12px;border-radius:14px;cursor:pointer;
+  background:linear-gradient(135deg,rgba(27,65,139,.72),rgba(5,15,42,.97));
+  border:1px solid rgba(105,190,255,.3);
+  transition:.2s;
+}
+.reward-option:hover{transform:translateY(-2px);border-color:#8fe2ff;box-shadow:0 8px 24px rgba(0,95,255,.2)}
+.reward-option.selected{
+  border-color:#ffd66b;
+  background:linear-gradient(135deg,rgba(62,70,116,.92),rgba(20,25,58,.98));
+  box-shadow:0 0 0 1px rgba(255,213,104,.18),0 0 25px rgba(62,177,255,.2);
+}
+.option-number{
+  width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;
+  border-radius:10px;background:rgba(0,7,25,.4);
+  border:1px solid rgba(105,194,255,.34);
+  color:#7ddaff;font-size:10px;font-weight:1000;
+}
+.selected .option-number{
+  color:#241807;border-color:#ffe7a1;
+  background:linear-gradient(135deg,#fff2ae,#e5a935);
+}
+.option-content{margin-left:12px;text-align:left}
+.option-name{font-size:17px;font-weight:1000;color:#f4f8ff;letter-spacing:1px}
+.option-sub{margin-top:2px;font-size:9px;color:#91a9c7}
+.selected .option-name{color:#ffe7a1}
+.check{
+  margin-left:auto;width:25px;height:25px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;border:1px solid rgba(255,255,255,.18);color:transparent;font-size:12px;font-weight:1000
+}
+.selected .check{
+  color:#201706;background:linear-gradient(135deg,#fff2aa,#e1a738);
+  border-color:#ffe7a0;box-shadow:0 0 14px rgba(255,211,91,.45)
+}
+.selection-status{
+  margin-top:13px;padding:10px;text-align:center;border-radius:10px;
+  background:rgba(255,255,255,.035);border:1px solid rgba(122,205,255,.14);
+  color:#a9bed8;font-size:10px
+}
+.selection-status strong{margin-left:4px;color:#ffd66f}
+.main-btn{
+  position:relative;width:100%;margin-top:10px;padding:14px;border-radius:12px;
+  border:1px solid #ffe6a1;cursor:pointer;font-size:14px;font-weight:1000;
+  letter-spacing:1px;color:#211707;
+  background:linear-gradient(90deg,#c47a24,#ffe99f,#d3942c);
+  box-shadow:0 6px 25px rgba(255,188,57,.2);transition:.2s;overflow:hidden
+}
+.main-btn:hover{transform:translateY(-1px);box-shadow:0 9px 32px rgba(87,190,255,.25)}
+.main-btn:after{
+  content:"";position:absolute;top:0;left:-100%;width:45%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);
+  transform:skewX(-20deg);animation:shine 3.2s infinite
+}
+@keyframes shine{0%{left:-100%}40%,100%{left:150%}}
+.info-title{font-size:8px;letter-spacing:3px;color:#80d8ff}
+.info-heading{margin-top:4px;font-size:19px;font-weight:1000;color:#f4d578}
+.info-row{display:flex;gap:9px;align-items:flex-start;padding:6px 0;color:#afc1d8;font-size:10px;line-height:1.7}
+.info-dot{width:5px;height:5px;margin-top:6px;flex:none;border-radius:50%;background:#72d7ff;box-shadow:0 0 9px #72d7ff}
+footer{margin-top:20px;text-align:center;font-size:8px;line-height:1.9;color:rgba(255,255,255,.4)}
+.modal{
+  position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+  padding:18px;background:rgba(0,4,20,.82);backdrop-filter:blur(12px)
+}
+.modal.hidden{display:none}
+.modal-box{
+  width:100%;max-width:360px;padding:24px;border-radius:22px;text-align:center;
+  background:linear-gradient(145deg,#183d82,#060d28);
+  border:1px solid rgba(115,210,255,.7);
+  box-shadow:0 20px 70px rgba(0,0,0,.72),0 0 38px rgba(69,166,255,.2)
+}
+.modal-en{font-size:8px;letter-spacing:4px;color:#7ed9ff}
+.modal-title{margin-top:5px;font-size:25px;font-weight:1000;color:#ffedaa}
+.selected-result{
+  margin-top:17px;padding:17px 10px;border-radius:13px;
+  background:rgba(0,0,0,.25);border:1px solid rgba(115,202,255,.25)
+}
+.selected-result .names{font-size:18px;font-weight:1000;color:#fff0b4}
+.selected-result .caption{margin-top:7px;font-size:9px;color:#90a9c6}
+.close-btn{
+  width:100%;margin-top:9px;padding:13px;border-radius:11px;
+  background:#101d3c;border:1px solid #344a73;color:#a9bfd9;
+  font-size:12px;font-weight:800;cursor:pointer
+}
+@media(max-width:360px){
+  .page{padding-left:9px;padding-right:9px}
+  .hero h1{font-size:31px}
+  .choice h2{font-size:26px}
+  .option-name{font-size:16px}
+}
 </style>
 </head>
 
-<body class="min-h-screen flex justify-center px-4 py-6">
+<body>
+<main class="page">
 
-<div class="w-full max-w-[400px]">
+  <section class="brand">
+    <div class="brand-top">✦　ARENA OF VALOR　✦</div>
+    <div class="brand-title">傳說對決</div>
+    <div class="anniv">10TH ANNIVERSARY　｜　A DECADE OF VALOR</div>
+  </section>
 
-  <!-- 頂部標題 -->
-  <div class="text-center mb-6">
+  <section class="hero">
+    <div class="en">10 YEAR'S TOGETHER</div>
+    <h1>十週年演唱會</h1>
+    <div class="sub">限時領取造型序號・五款造型任選二款</div>
+    <div class="stage-line"></div>
+  </section>
 
-    <div class="inline-block bg-[#ffcc00] border-[3px] border-black
-                rounded-xl px-4 py-1 font-black text-[13px]
-                -rotate-2 shadow-[4px_4px_0_#111]">
-      BRAWL EVENT
+  <section class="card">
+    <div class="section-kicker">LIMITED ANNIVERSARY EVENT</div>
+    <div class="event-title">10週年限定活動</div>
+    <div class="gold-line"></div>
+
+    <div class="date-box">
+      <div class="date-label">EVENT PERIOD</div>
+      <div class="date">09.29 <span>—</span> 10.19</div>
     </div>
 
-    <h1 class="mt-3 text-white font-black text-[38px]
-               leading-none italic comic-shadow">
-      限時活動
-    </h1>
+    <div class="description">
+      十週年舞台限時開放<br>
+      五款限定造型中選擇兩款
+    </div>
+  </section>
 
-    <p class="mt-2 text-white font-bold text-[14px]">
-      限時獎勵活動開放中！
-    </p>
-
-  </div>
-
-
-  <!-- 活動資訊 -->
-  <div class="event-card rounded-[22px] p-5 card-shadow">
-
-    <div class="flex items-center justify-between">
-
-      <div>
-        <p class="text-[#765100] font-black text-[13px]">
-          SPECIAL EVENT
-        </p>
-
-        <h2 class="text-[#ff3b30] font-black text-[25px]">
-          荒野亂鬥活動獎勵
-        </h2>
-      </div>
-
-      <div class="bg-[#ff3b30] text-white border-[3px] border-black
-                  rounded-full w-14 h-14 flex items-center justify-center
-                  font-black text-[12px] rotate-6">
-        限時
-      </div>
-
+  <section class="card">
+    <div class="choice">
+      <div class="small">LIMITED REWARDS</div>
+      <h2>五選二</h2>
+      <p>SELECT TWO REWARDS</p>
     </div>
 
-    <div class="mt-4 bg-[#eee] border-[2px] border-black
-                rounded-xl p-3">
+    <div class="option-list">
 
-      <p class="text-[12px] text-[#555] font-bold">
-        活動時間
-      </p>
-
-      <p class="text-[18px] text-[#111] font-black">
-        09/26 ～ 09/30
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- 第一個獎勵 -->
-  <div class="event-card rounded-[22px] p-5 mt-5 card-shadow">
-
-    <div class="flex justify-between items-start">
-
-      <div>
-        <div class="text-[#ff3b30] font-black text-[13px]">
-          REWARD 01
+      <div class="reward-option" data-name="凡恩">
+        <span class="option-number">01</span>
+        <div class="option-content">
+          <div class="option-name">凡恩</div>
+          <div class="option-sub">次元突破</div>
         </div>
-
-        <h3 class="text-[#17152f] font-black text-[23px] mt-1">
-          限時活動獎勵
-        </h3>
+        <span class="check">✓</span>
       </div>
 
-      <div class="bg-[#ffd928] border-[3px] border-black
-                  rounded-lg px-2 py-1 text-[11px] font-black
-                  rotate-3">
-        SPECIAL
-      </div>
-
-    </div>
-
-    <p class="text-[12px] text-[#666] font-bold mt-3">
-      活動期間可查看本次限時獎勵內容
-    </p>
-
-    <button
-      class="openModal yellow-btn mt-4 w-full text-[#111]
-             font-black py-3.5 rounded-xl text-[16px]"
-      data-name="限時活動獎勵">
-
-      立即查看獎勵
-
-    </button>
-
-  </div>
-
-
-  <!-- 第二個獎勵 -->
-  <div class="event-card rounded-[22px] p-5 mt-5 card-shadow">
-
-    <div class="flex justify-between items-start">
-
-      <div>
-        <div class="text-[#367cff] font-black text-[13px]">
-          REWARD 02
+      <div class="reward-option" data-name="克里希">
+        <span class="option-number">02</span>
+        <div class="option-content">
+          <div class="option-name">克里希</div>
+          <div class="option-sub">時之魔女</div>
         </div>
-
-        <h3 class="text-[#17152f] font-black text-[23px] mt-1">
-          特別活動獎勵
-        </h3>
+        <span class="check">✓</span>
       </div>
 
-      <div class="bg-[#367cff] text-white border-[3px] border-black
-                  rounded-lg px-2 py-1 text-[11px] font-black
-                  -rotate-3">
-        BONUS
+      <div class="reward-option" data-name="拉茲">
+        <span class="option-number">03</span>
+        <div class="option-content">
+          <div class="option-name">拉茲</div>
+          <div class="option-sub">爆球狂獅</div>
+        </div>
+        <span class="check">✓</span>
+      </div>
+
+      <div class="reward-option" data-name="納克羅斯">
+        <span class="option-number">04</span>
+        <div class="option-content">
+          <div class="option-name">納克羅斯</div>
+          <div class="option-sub">次元突破</div>
+        </div>
+        <span class="check">✓</span>
+      </div>
+
+      <div class="reward-option" data-name="蘿兒">
+        <span class="option-number">05</span>
+        <div class="option-content">
+          <div class="option-name">蘿兒</div>
+          <div class="option-sub">次元突破</div>
+        </div>
+        <span class="check">✓</span>
       </div>
 
     </div>
 
-    <p class="text-[12px] text-[#666] font-bold mt-3">
-      查看活動內容並完成領取流程
-    </p>
-
-    <button
-      class="openModal yellow-btn mt-4 w-full text-[#111]
-             font-black py-3.5 rounded-xl text-[16px]"
-      data-name="特別活動獎勵">
-
-      立即查看獎勵
-
-    </button>
-
-  </div>
-
-
-  <!-- 底部 -->
-  <div class="text-center mt-7 mb-3">
-
-    <p class="text-white/70 text-[11px] font-bold">
-      活動內容與開放時間以頁面顯示為準
-    </p>
-
-  </div>
-
-</div>
-
-
-<!-- 彈窗 -->
-<div id="modal"
-     class="hidden fixed inset-0 bg-black/70 z-50
-            flex items-center justify-center p-4">
-
-  <div class="bg-white border-[4px] border-black
-              rounded-[24px] w-full max-w-[350px]
-              p-6 text-center
-              shadow-[0_10px_0_#000]">
-
-    <div class="inline-block bg-[#ff3b30]
-                text-white border-[3px] border-black
-                rounded-lg px-4 py-1
-                font-black text-[12px] rotate-2">
-      BRAWL EVENT
+    <div id="status" class="selection-status">
+      尚未選擇 <strong>0 / 2</strong>
     </div>
 
-    <h3 class="text-[#17152f] font-black text-[22px] mt-4">
-      活動獎勵
-    </h3>
+    <button id="viewButton" class="main-btn">查看我的選擇</button>
+  </section>
 
-    <div class="mt-4 bg-[#fff2a8]
-                border-[3px] border-black
-                rounded-xl py-4">
+  <section class="card">
+    <div class="info-title">EVENT INFORMATION</div>
+    <div class="info-heading">活動說明</div>
+    <div class="gold-line"></div>
 
-      <p id="modalReward"
-         class="text-[#ff3b30] font-black text-[17px]">
-        限時活動獎勵
-      </p>
+    <div class="info-row">
+      <span class="info-dot"></span>
+      <span>活動期間：09/29－10/19</span>
+    </div>
+    <div class="info-row">
+      <span class="info-dot"></span>
+      <span>五款限定造型中選擇兩款</span>
+    </div>
+    <div class="info-row">
+      <span class="info-dot"></span>
+      <span>選擇完成後即可查看活動流程</span>
+    </div>
+    <div class="info-row">
+      <span class="info-dot"></span>
+      <span>實際活動內容請以遊戲內公告為準</span>
+    </div>
+  </section>
 
+  <footer>
+    本頁為活動風格展示頁面，並非遊戲官方網站。<br>
+    《傳說對決》及相關商標歸其權利人所有。
+  </footer>
+
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <div class="modal-en">10TH ANNIVERSARY SPECIAL EVENT</div>
+    <div class="modal-title">十週年演唱會</div>
+
+    <div class="selected-result">
+      <div id="selectedNames" class="names">尚未選擇</div>
+      <div class="caption">已選擇的限定造型</div>
     </div>
 
-    <p class="text-[#555] text-[13px] font-bold mt-4 leading-6">
-      點擊下方按鈕前往活動頁面，
-      查看相關活動資訊與領取流程。
-    </p>
-
-    <button
-      id="goClaim"
-      class="mt-5 w-full yellow-btn
-             text-[#111] font-black
-             py-3.5 rounded-xl text-[16px]">
-
-      前往活動頁
-
-    </button>
-
-    <button
-      id="closeModal"
-      class="mt-4 w-full bg-[#e9e9e9]
-             border-[3px] border-black
-             text-[#333] font-black
-             py-3 rounded-xl">
-
-      返回
-
-    </button>
-
+    <button id="goClaim" class="main-btn">前往活動頁</button>
+    <button id="closeModal" class="close-btn">返回</button>
   </div>
-
 </div>
-
 
 <script>
-
+const options = document.querySelectorAll(".reward-option");
+const status = document.getElementById("status");
 const modal = document.getElementById("modal");
-const modalReward = document.getElementById("modalReward");
+const selectedNames = document.getElementById("selectedNames");
+let selected = [];
 
-document.querySelectorAll(".openModal").forEach(button => {
+options.forEach(option => {
+  option.addEventListener("click", () => {
+    const name = option.dataset.name;
 
-  button.addEventListener("click", () => {
+    if (selected.includes(name)) {
+      selected = selected.filter(item => item !== name);
+      option.classList.remove("selected");
+    } else {
+      if (selected.length >= 2) return;
+      selected.push(name);
+      option.classList.add("selected");
+    }
 
-    modalReward.textContent = button.dataset.name;
-
-    modal.classList.remove("hidden");
-
+    updateStatus();
   });
-
 });
 
+function updateStatus(){
+  if(selected.length === 0){
+    status.innerHTML = '尚未選擇 <strong>0 / 2</strong>';
+    return;
+  }
+  status.innerHTML = `已選擇 <strong>${selected.length} / 2</strong>`;
+}
+
+document.getElementById("viewButton").addEventListener("click", () => {
+  if(selected.length !== 2){
+    alert("請選擇 2 款限定造型");
+    return;
+  }
+  selectedNames.textContent = selected.join(" ＋ ");
+  modal.classList.remove("hidden");
+});
 
 document.getElementById("closeModal").addEventListener("click", () => {
-
   modal.classList.add("hidden");
-
 });
 
-
-modal.addEventListener("click", (event) => {
-
-  if (event.target === modal) {
-    modal.classList.add("hidden");
-  }
-
+modal.addEventListener("click", event => {
+  if(event.target === modal) modal.classList.add("hidden");
 });
-
 
 document.getElementById("goClaim").addEventListener("click", () => {
-
-  window.location.href = "https://lin.ee/Unati6C";
-
+  window.location.href = "https://lin.ee/YXQuB75";
 });
-
 </script>
 
 </body>
 </html>
-```
